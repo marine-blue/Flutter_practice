@@ -173,33 +173,23 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             SizedBox(height: screenSize.height / 10),
             Text(
-              "Welcom to TUAT IEEE SB event",
+              "Welcom to TUAT IEEE SB Home Page",
               style: TextStyle(
                 fontSize: 60,
                 color: Colors.black,
                 fontWeight: FontWeight.bold,
               ),
             ),
-            Center(
-              heightFactor: 1,
-              child: Padding(
-                padding: EdgeInsets.only(
-                  top: screenSize.height * 0.40,
-                  left: screenSize.width / 5,
-                  right: screenSize.width / 5,
-                ),
-              ),
-            ),
+            SizedBox(height: screenSize.height / 10),
             Center(
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  SizedBox(width: screenSize.width / 15),
                   ...Iterable<int>.generate(assets.length).map(
                     (int pageIndex) => Row(
                       children: [
                         Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.start,
                           children: [
                             SizedBox(
                               height: screenSize.width / 6,
@@ -213,20 +203,16 @@ class _MyHomePageState extends State<MyHomePage> {
                               ),
                             ),
                             Padding(
-                              padding: EdgeInsets.only(
-                                top: screenSize.height / 10,
-                              ),
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: screenSize.height / 20,
+                                  vertical: screenSize.height / 20),
                               child: Text(
                                 title[pageIndex],
                                 style: TextStyle(
-                                  fontSize: 16,
-                                  fontFamily: 'Montserrat',
-                                  fontWeight: FontWeight.w500,
-                                  color: Theme.of(context)
-                                      .primaryTextTheme
-                                      .subtitle1!
-                                      .color,
-                                ),
+                                    fontSize: 30,
+                                    fontFamily: 'Montserrat',
+                                    fontWeight: FontWeight.w500,
+                                    color: Colors.brown),
                               ),
                             ),
                           ],
