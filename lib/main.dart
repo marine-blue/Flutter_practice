@@ -69,14 +69,14 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: PreferredSize(
         preferredSize: Size(screenSize.width, 1000),
         child: Container(
+          color: Colors.black38,
           child: Padding(
             padding: EdgeInsets.all(20),
             child: Row(
               children: [
-                Text('EXPLORE'),
                 Expanded(
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       InkWell(
                         onHover: (value) {
@@ -87,30 +87,15 @@ class _MyHomePageState extends State<MyHomePage> {
                           });
                         },
                         onTap: () {},
-                        child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Text(
-                              'Discover',
-                              style: TextStyle(
-                                color: _isHovering[0]
-                                    ? Colors.blue[200]
-                                    : Colors.white,
-                              ),
-                            ),
-                            SizedBox(height: 5),
-                            Visibility(
-                              maintainAnimation: true,
-                              maintainState: true,
-                              maintainSize: true,
-                              visible: _isHovering[0],
-                              child: Container(
-                                height: 2,
-                                width: 20,
-                                color: Colors.white,
-                              ),
-                            )
-                          ],
+                        child: Text(
+                          'IEEE TUAT SB',
+                          style: TextStyle(
+                            color: _isHovering[0]
+                                ? Color.fromARGB(255, 9, 67, 97)
+                                : Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 25,
+                          ),
                         ),
                       ),
                       SizedBox(width: screenSize.width / 20),
@@ -127,7 +112,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           mainAxisSize: MainAxisSize.min,
                           children: [
                             Text(
-                              'Contact Us',
+                              'Activities',
                               style: TextStyle(
                                 color: _isHovering[1]
                                     ? Colors.blue[200]
@@ -140,6 +125,74 @@ class _MyHomePageState extends State<MyHomePage> {
                               maintainState: true,
                               maintainSize: true,
                               visible: _isHovering[1],
+                              child: Container(
+                                height: 2,
+                                width: 20,
+                                color: Colors.white,
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                      InkWell(
+                        onHover: (value) {
+                          setState(() {
+                            value
+                                ? _isHovering[2] = true
+                                : _isHovering[2] = false;
+                          });
+                        },
+                        onTap: () {},
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Text(
+                              'Events',
+                              style: TextStyle(
+                                color: _isHovering[2]
+                                    ? Colors.blue[200]
+                                    : Colors.white,
+                              ),
+                            ),
+                            Visibility(
+                              maintainAnimation: true,
+                              maintainState: true,
+                              maintainSize: true,
+                              visible: _isHovering[2],
+                              child: Container(
+                                height: 2,
+                                width: 20,
+                                color: Colors.white,
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                      InkWell(
+                        onHover: (value) {
+                          setState(() {
+                            value
+                                ? _isHovering[3] = true
+                                : _isHovering[3] = false;
+                          });
+                        },
+                        onTap: () {},
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Text(
+                              'Members',
+                              style: TextStyle(
+                                color: _isHovering[3]
+                                    ? Colors.blue[200]
+                                    : Colors.white,
+                              ),
+                            ),
+                            Visibility(
+                              maintainAnimation: true,
+                              maintainState: true,
+                              maintainSize: true,
+                              visible: _isHovering[3],
                               child: Container(
                                 height: 2,
                                 width: 20,
