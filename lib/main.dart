@@ -66,6 +66,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
     return Scaffold(
       extendBodyBehindAppBar: true,
+      backgroundColor: Colors.white,
       appBar: PreferredSize(
         preferredSize: Size(screenSize.width, 1000),
         child: Container(
@@ -226,7 +227,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             SizedBox(height: screenSize.height / 10),
             Text(
-              "Welcom to TUAT IEEE SB Home Page",
+              "Welcome to TUAT IEEE SB Home Page",
               style: TextStyle(
                 fontSize: 60,
                 color: Colors.black,
@@ -234,45 +235,146 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
             SizedBox(height: screenSize.height / 10),
+            Row(
+              children: [
+                SizedBox(
+                  height: screenSize.height / 2,
+                  width: screenSize.width / 2,
+                  child: Column(
+                    children: [
+                      Text(
+                        "IEEE Student Branch とは",
+                        style: TextStyle(
+                            fontSize: 30,
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                            fontFamily: 'NotoSansJP'),
+                      ),
+                      SizedBox(height: screenSize.height / 20),
+                      Text(
+                        "IEEEの活動組織の一つであり、サークル活動に近い意味合いがあります。学生自ら様々な企画運営ができる他、 他大学のBranchの学生や教職員、社会で活躍している専門家等と会い、学び、また交流することによって、色々なプロジェクト、 会議、見学、旅行等の活動を通して、多くの教育的、技術的、専門的な刺激を得ることができます。",
+                        style: TextStyle(
+                            fontSize: 20,
+                            color: Colors.black,
+                            fontFamily: 'NotoSansJP'),
+                      ),
+                    ],
+                  ),
+                ),
+                SizedBox(
+                  height: screenSize.height * 0.45,
+                  width: screenSize.width * 0.45,
+                  child: Image.asset(
+                    "images/IMG_20221031_115447_085.jpeg",
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ],
+            ),
             Center(
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  ...Iterable<int>.generate(assets.length).map(
-                    (int pageIndex) => Row(
-                      children: [
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            SizedBox(
-                              height: screenSize.width / 6,
-                              width: screenSize.width / 4,
-                              child: ClipRRect(
-                                borderRadius: BorderRadius.circular(5.0),
-                                child: Image.asset(
-                                  assets[pageIndex],
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
-                            ),
-                            Padding(
-                              padding: EdgeInsets.symmetric(
-                                  horizontal: screenSize.height / 20,
-                                  vertical: screenSize.height / 20),
-                              child: Text(
-                                title[pageIndex],
-                                style: TextStyle(
-                                    fontSize: 30,
-                                    fontFamily: 'Montserrat',
-                                    fontWeight: FontWeight.w500,
-                                    color: Colors.brown),
-                              ),
-                            ),
-                          ],
-                        ),
-                        SizedBox(width: screenSize.width / 20),
-                      ],
+                  Card(
+                    child: SizedBox(
+                      height: screenSize.height / 4.5,
+                      width: screenSize.width / 4,
+                      child: Column(
+                        children: [
+                          Container(
+                            height: 2,
+                            width: screenSize.width / 4,
+                            color: Color.fromARGB(255, 219, 218, 218),
+                          ),
+                          Text(
+                            "ミーティング",
+                            style: TextStyle(
+                                fontSize: 25, fontWeight: FontWeight.bold),
+                          ),
+                          SizedBox(height: screenSize.height / 20),
+                          Text(
+                            "週に1度のペースで役員を中心にメンバーが集まり活動予定やイベントの計画を行っています。",
+                            style: TextStyle(
+                                fontSize: 15, fontWeight: FontWeight.normal),
+                          ),
+                        ],
+                      ),
                     ),
+                    color: Colors.white,
+                    margin: EdgeInsets.all(10),
+                    elevation: 0, // 影の離れ具合
+                    shadowColor: Colors.white,
+                  ),
+                  Card(
+                    child: SizedBox(
+                      height: screenSize.height / 4.5,
+                      width: screenSize.width / 4,
+                      child: Column(
+                        children: [
+                          Container(
+                            height: 2,
+                            width: screenSize.width / 4,
+                            color: Color.fromARGB(255, 219, 218, 218),
+                          ),
+                          Text(
+                            "勉強会",
+                            style: TextStyle(
+                                fontSize: 25,
+                                fontWeight: FontWeight.bold,
+                                fontFamily: 'NotoSansJP'),
+                          ),
+                          SizedBox(height: screenSize.height / 20),
+                          Text(
+                            "週に1度のペースでメンバーが各自で興味を持った議題を持ち寄り議論しています。",
+                            style: TextStyle(
+                                fontSize: 15,
+                                fontWeight: FontWeight.normal,
+                                fontFamily: 'NotoSansJP'),
+                          ),
+                        ],
+                      ),
+                    ),
+                    color: Colors.white,
+                    margin: EdgeInsets.all(30),
+                    elevation: 0, // 影の離れ具合
+                    shadowColor: Colors.white,
+                  ),
+                  Card(
+                    child: SizedBox(
+                      height: screenSize.height / 2,
+                      width: screenSize.width / 4,
+                      child: Column(
+                        children: [
+                          Container(
+                            height: 2,
+                            width: screenSize.width / 4,
+                            color: Color.fromARGB(255, 219, 218, 218),
+                          ),
+                          Text(
+                            "イベント",
+                            style: TextStyle(
+                                fontSize: 25,
+                                fontWeight: FontWeight.bold,
+                                fontFamily: 'NotoSansJP'),
+                          ),
+                          SizedBox(height: screenSize.height / 20),
+                          Text(
+                            "不定期でイベントを開催したり、外部のイベントに参加しています。",
+                            style: TextStyle(
+                                fontSize: 15,
+                                fontWeight: FontWeight.normal,
+                                fontFamily: 'NotoSansJP'),
+                          ),
+                          Expanded(
+                              child:
+                                  Image.asset("images/IEEE_SB_brand_small.png"))
+                        ],
+                      ),
+                    ),
+                    color: Colors.white,
+                    margin: EdgeInsets.all(30),
+                    elevation: 0, // 影の離れ具合
+                    shadowColor: Colors.white,
                   ),
                 ],
               ),
