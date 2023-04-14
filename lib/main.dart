@@ -70,7 +70,7 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: PreferredSize(
         preferredSize: Size(screenSize.width, 1000),
         child: Container(
-          color: Colors.black38,
+          color: Colors.black,
           child: Padding(
             padding: EdgeInsets.all(20),
             child: Row(
@@ -217,7 +217,7 @@ class _MyHomePageState extends State<MyHomePage> {
             Container(
               // image below the top bar
               child: SizedBox(
-                height: screenSize.height * 0.45,
+                height: screenSize.height,
                 width: screenSize.width,
                 child: Image.asset(
                   "images/IMG_20221031_115447_085.jpeg",
@@ -226,7 +226,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
             SizedBox(height: screenSize.height / 10),
-            Text(
+            const Text(
               "Welcome to TUAT IEEE SB Home Page",
               style: TextStyle(
                 fontSize: 60,
@@ -242,7 +242,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   width: screenSize.width / 2,
                   child: Column(
                     children: [
-                      Text(
+                      const Text(
                         "IEEE Student Branch とは",
                         style: TextStyle(
                             fontSize: 30,
@@ -251,12 +251,15 @@ class _MyHomePageState extends State<MyHomePage> {
                             fontFamily: 'NotoSansJP'),
                       ),
                       SizedBox(height: screenSize.height / 20),
-                      Text(
-                        "IEEEの活動組織の一つであり、サークル活動に近い意味合いがあります。学生自ら様々な企画運営ができる他、 他大学のBranchの学生や教職員、社会で活躍している専門家等と会い、学び、また交流することによって、色々なプロジェクト、 会議、見学、旅行等の活動を通して、多くの教育的、技術的、専門的な刺激を得ることができます。",
-                        style: TextStyle(
-                            fontSize: 20,
-                            color: Colors.black,
-                            fontFamily: 'NotoSansJP'),
+                      Container(
+                        padding: const EdgeInsets.all(20),
+                        child: const Text(
+                          "IEEEの活動組織の一つであり、サークル活動に近い意味合いがあります。学生自ら様々な企画運営ができる他、 他大学のBranchの学生や教職員、社会で活躍している専門家等と会い、学び、また交流することによって、色々なプロジェクト、 会議、見学、旅行等の活動を通して、多くの教育的、技術的、専門的な刺激を得ることができます。",
+                          style: TextStyle(
+                              fontSize: 20,
+                              color: Colors.black,
+                              fontFamily: 'NotoSansJP'),
+                        ),
                       ),
                     ],
                   ),
@@ -277,7 +280,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 children: [
                   Card(
                     child: SizedBox(
-                      height: screenSize.height / 4.5,
+                      height: screenSize.height / 2,
                       width: screenSize.width / 4,
                       child: Column(
                         children: [
@@ -295,19 +298,27 @@ class _MyHomePageState extends State<MyHomePage> {
                           Text(
                             "週に1度のペースで役員を中心にメンバーが集まり活動予定やイベントの計画を行っています。",
                             style: TextStyle(
-                                fontSize: 15, fontWeight: FontWeight.normal),
+                                fontSize: 15,
+                                fontWeight: FontWeight.normal,
+                                fontFamily: 'NotoSansJP'),
+                          ),
+                          Expanded(
+                            child: Image.asset(
+                              "images/Meeting.png",
+                              fit: BoxFit.cover,
+                            ),
                           ),
                         ],
                       ),
                     ),
                     color: Colors.white,
-                    margin: EdgeInsets.all(10),
+                    margin: const EdgeInsets.all(10),
                     elevation: 0, // 影の離れ具合
                     shadowColor: Colors.white,
                   ),
                   Card(
                     child: SizedBox(
-                      height: screenSize.height / 4.5,
+                      height: screenSize.height / 2,
                       width: screenSize.width / 4,
                       child: Column(
                         children: [
@@ -331,11 +342,14 @@ class _MyHomePageState extends State<MyHomePage> {
                                 fontWeight: FontWeight.normal,
                                 fontFamily: 'NotoSansJP'),
                           ),
+                          Expanded(
+                            child: Image.asset("images/benkyokai.jpg"),
+                          ),
                         ],
                       ),
                     ),
                     color: Colors.white,
-                    margin: EdgeInsets.all(30),
+                    margin: const EdgeInsets.all(30),
                     elevation: 0, // 影の離れ具合
                     shadowColor: Colors.white,
                   ),
@@ -366,13 +380,13 @@ class _MyHomePageState extends State<MyHomePage> {
                                 fontFamily: 'NotoSansJP'),
                           ),
                           Expanded(
-                              child:
-                                  Image.asset("images/IEEE_SB_brand_small.png"))
+                            child: Image.asset("images/group.png"),
+                          ),
                         ],
                       ),
                     ),
                     color: Colors.white,
-                    margin: EdgeInsets.all(30),
+                    margin: const EdgeInsets.all(30),
                     elevation: 0, // 影の離れ具合
                     shadowColor: Colors.white,
                   ),

@@ -63,6 +63,12 @@ flutter:
     - images/IEEE_SB_brand_small.png
     - images/IMG_20220523_162425.jpg
     - images/unknown.png
+    - images/Meeting.jpg
+    - images/Meeting.jpeg
+    - images/TUATIEEElogo.png
+    - images/benkyokai.jpg
+    - images/group.png
+    - images/meeting.png
 
   # To add assets to your application, add an assets section, like this:
   # assets:
