@@ -336,7 +336,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           ),
                           SizedBox(height: screenSize.height / 20),
                           Text(
-                            "週に1度のペースでメンバーが各自で興味を持った議題を持ち寄り議論しています。",
+                            "月に1度のペースでメンバーが各自で興味を持った議題を持ち寄り議論しています。",
                             style: TextStyle(
                                 fontSize: 15,
                                 fontWeight: FontWeight.normal,
