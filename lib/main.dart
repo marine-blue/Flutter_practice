@@ -1,3 +1,5 @@
+import 'dart:html';
+
 import 'package:flutter/material.dart';
 
 void main() {
@@ -214,25 +216,36 @@ class _MyHomePageState extends State<MyHomePage> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Container(
-              // image below the top bar
-              child: SizedBox(
-                height: screenSize.height,
-                width: screenSize.width,
-                child: Image.asset(
-                  "images/IMG_20221031_115447_085.jpeg",
-                  fit: BoxFit.cover,
+            Stack(
+              children: [
+                Container(
+                  // image below the top bar
+                  child: SizedBox(
+                    height: screenSize.height,
+                    width: screenSize.width,
+                    child: Image.asset(
+                      "images/IMG_20221031_115447_085.jpeg",
+                      fit: BoxFit.cover,
+                    ),
+                  ),
                 ),
-              ),
-            ),
-            SizedBox(height: screenSize.height / 10),
-            const Text(
-              "Welcome to TUAT IEEE SB Home Page",
-              style: TextStyle(
-                fontSize: 60,
-                color: Colors.black,
-                fontWeight: FontWeight.bold,
-              ),
+                Positioned(
+                  left: screenSize.width * 0.1,
+                  top: screenSize.height * 0.3,
+                  child: Container(
+                    height: screenSize.height,
+                    width: screenSize.width * 0.5,
+                    child: const Text(
+                      "Welcome to TUAT IEEE SB Home Page",
+                      style: TextStyle(
+                        fontSize: 90,
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
             ),
             SizedBox(height: screenSize.height / 10),
             Row(
@@ -304,7 +317,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           ),
                           Expanded(
                             child: Image.asset(
-                              "images/Meeting.png",
+                              "images/22771349.png",
                               fit: BoxFit.cover,
                             ),
                           ),
@@ -343,7 +356,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                 fontFamily: 'NotoSansJP'),
                           ),
                           Expanded(
-                            child: Image.asset("images/benkyokai.jpg"),
+                            child: Image.asset("images/22987927.png"),
                           ),
                         ],
                       ),
@@ -380,7 +393,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                 fontFamily: 'NotoSansJP'),
                           ),
                           Expanded(
-                            child: Image.asset("images/group.png"),
+                            child: Image.asset("images/22171414.jpg"),
                           ),
                         ],
                       ),
@@ -392,6 +405,40 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                 ],
               ),
+            ),
+            Stack(
+              children: [
+                Container(
+                  height: screenSize.height * 2,
+                  width: screenSize.width,
+                  color: Color.fromARGB(255, 233, 232, 232),
+                  child: Center(
+                    child: Text(
+                      "Members",
+                      style: TextStyle(
+                          fontSize: 30,
+                          fontWeight: FontWeight.bold,
+                          fontFamily: 'NotoSansJP'),
+                    ),
+                  ),
+                ),
+                Column(
+                  children: [
+                    Row(
+                      children: [
+                        Container(
+                          width: screenSize.width * 0.4,
+                          padding: const EdgeInsets.all(20),
+                          decoration: const BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: Colors.black,
+                          ),
+                        ),
+                      ],
+                    )
+                  ],
+                ),
+              ],
             ),
           ],
         ),
