@@ -72,6 +72,9 @@ flutter:
     - images/22987927.png
     - images/22171414.jpg
     - images/22771349.png
+    - images/discoicon.png
+    - images/profiel.png
+    - web/favicon.png
 
   # To add assets to your application, add an assets section, like this:
   # assets:

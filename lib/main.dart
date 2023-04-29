@@ -13,7 +13,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'IEEE TUAT SB',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         // This is the theme of your application.
         //
@@ -51,17 +52,45 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   final List _isHovering = [false, false, false, false];
-  final List<String> assets = [
-    "images/IEEE_SB_brand_small.png",
-    "images/IMG_20220523_162425.jpg",
-    "images/unknown.png",
+  final List<String> activityimages = [
+    "images/22771349.png",
+    "images/22987927.png",
+    "images/22171414.jpg",
   ];
-  final List<String> title = [
-    "Activity",
-    "Schedule",
-    "Lectures",
+  final List<String> activitytitles = [
+    "ミーティング",
+    "勉強会",
+    "イベント",
+  ];
+  final List<String> activitytexts = [
+    "週に1度のペースでSB役員を中心にメンバーがオンサイトで集まり活動予定やイベントの企画について話し合っています。",
+    "月に1度のペースでメンバー各自が興味を持った議題について持ち寄りプレゼンター担当を交代しながら議論しています。",
+    "不定期で技術に関するイベントを開催している他、外部の団体が開催するのイベントにも参加しています。",
+  ];
+  /* メンバー[役職、名前、画像]*/
+  final List<List<String>> memberlists = [
+    ["Chair", "Shogo Takata", "images/profiel.png"],
+    ["Vice Chair", "Hisao Usui", "images/profiel.png"],
+    ["Secretary", "Nao Sato", "images/profiel.png"],
+    ["Treasure", "Ryota Genseki", "images/profiel.png"],
+    ["member", "Freshmen", "images/profiel.png"]
   ];
 
+  final List<List<String>> eventlists = [
+    [
+      "C言語 Workshop",
+      "1年生やプログラミング初学者に向けてプログラミングでつまづきがちな環境構築やデバッグ方法について説明を行います。"
+    ],
+    [
+      "LaTexワークショップ",
+      "研究室配属前の3年生に対してマークアップ言語LaTexを用いた文書作成について講習会を行います。講習会ではオンラインエディタのOverleafを使用する他場合によりローカル環境のインストールを強く勧められます。"
+    ],
+    ["テクニカルワークショップ", "主にSB内部のメンバーで新たなプログラミング言語やデバイスを用いてチュートリアルの成果物を作成します。"],
+    [
+      "LT大会",
+      "他大学SBと連携して一人当たり5分の持ち時間で情報技術に関するピッチコンテストを開催します。質疑応答の場面などを利用して意見交換などが活発に行われます。"
+    ],
+  ];
   @override
   Widget build(BuildContext context) {
     var screenSize = MediaQuery.of(context).size;
@@ -247,7 +276,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ],
             ),
-            SizedBox(height: screenSize.height / 10),
+            SizedBox(height: screenSize.height * 0.3),
             Row(
               children: [
                 SizedBox(
@@ -287,158 +316,181 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ],
             ),
+            SizedBox(height: screenSize.height * 0.3),
             Center(
               child: Row(
+                /*イラストと活動内容3つの紹介部分横並び*/
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Card(
-                    child: SizedBox(
-                      height: screenSize.height / 2,
-                      width: screenSize.width / 4,
-                      child: Column(
-                        children: [
-                          Container(
-                            height: 2,
-                            width: screenSize.width / 4,
-                            color: Color.fromARGB(255, 219, 218, 218),
-                          ),
-                          Text(
-                            "ミーティング",
-                            style: TextStyle(
-                                fontSize: 25, fontWeight: FontWeight.bold),
-                          ),
-                          SizedBox(height: screenSize.height / 20),
-                          Text(
-                            "週に1度のペースで役員を中心にメンバーが集まり活動予定やイベントの計画を行っています。",
-                            style: TextStyle(
-                                fontSize: 15,
-                                fontWeight: FontWeight.normal,
-                                fontFamily: 'NotoSansJP'),
-                          ),
-                          Expanded(
-                            child: Image.asset(
-                              "images/22771349.png",
-                              fit: BoxFit.cover,
+                  ...Iterable<int>.generate(activityimages.length).map(
+                    (int pageIndex) => Card(
+                      child: SizedBox(
+                        height: screenSize.height / 2,
+                        width: screenSize.width / 3.5,
+                        child: Column(
+                          children: [
+                            Container(
+                              height: 2,
+                              width: screenSize.width / 4,
+                              color: Color.fromARGB(255, 219, 218, 218),
                             ),
-                          ),
-                        ],
+                            SizedBox(height: screenSize.height * 0.02),
+                            Text(
+                              activitytitles[pageIndex],
+                              style: TextStyle(
+                                  fontSize: 25,
+                                  fontWeight: FontWeight.bold,
+                                  fontFamily: 'NotoSansJP'),
+                            ),
+                            SizedBox(height: screenSize.height * 0.05),
+                            Text(
+                              activitytexts[pageIndex],
+                              style: TextStyle(
+                                  fontSize: 17,
+                                  fontWeight: FontWeight.normal,
+                                  fontFamily: 'NotoSansJP'),
+                            ),
+                            SizedBox(height: screenSize.height * 0.07),
+                            Expanded(
+                              child: Image.asset(
+                                activityimages[pageIndex],
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
+                      color: Colors.white,
+                      margin: const EdgeInsets.all(10),
+                      elevation: 0, // 影の離れ具合
+                      shadowColor: Colors.white,
                     ),
-                    color: Colors.white,
-                    margin: const EdgeInsets.all(10),
-                    elevation: 0, // 影の離れ具合
-                    shadowColor: Colors.white,
-                  ),
-                  Card(
-                    child: SizedBox(
-                      height: screenSize.height / 2,
-                      width: screenSize.width / 4,
-                      child: Column(
-                        children: [
-                          Container(
-                            height: 2,
-                            width: screenSize.width / 4,
-                            color: Color.fromARGB(255, 219, 218, 218),
-                          ),
-                          Text(
-                            "勉強会",
-                            style: TextStyle(
-                                fontSize: 25,
-                                fontWeight: FontWeight.bold,
-                                fontFamily: 'NotoSansJP'),
-                          ),
-                          SizedBox(height: screenSize.height / 20),
-                          Text(
-                            "月に1度のペースでメンバーが各自で興味を持った議題を持ち寄り議論しています。",
-                            style: TextStyle(
-                                fontSize: 15,
-                                fontWeight: FontWeight.normal,
-                                fontFamily: 'NotoSansJP'),
-                          ),
-                          Expanded(
-                            child: Image.asset("images/22987927.png"),
-                          ),
-                        ],
-                      ),
-                    ),
-                    color: Colors.white,
-                    margin: const EdgeInsets.all(30),
-                    elevation: 0, // 影の離れ具合
-                    shadowColor: Colors.white,
-                  ),
-                  Card(
-                    child: SizedBox(
-                      height: screenSize.height / 2,
-                      width: screenSize.width / 4,
-                      child: Column(
-                        children: [
-                          Container(
-                            height: 2,
-                            width: screenSize.width / 4,
-                            color: Color.fromARGB(255, 219, 218, 218),
-                          ),
-                          Text(
-                            "イベント",
-                            style: TextStyle(
-                                fontSize: 25,
-                                fontWeight: FontWeight.bold,
-                                fontFamily: 'NotoSansJP'),
-                          ),
-                          SizedBox(height: screenSize.height / 20),
-                          Text(
-                            "不定期でイベントを開催したり、外部のイベントに参加しています。",
-                            style: TextStyle(
-                                fontSize: 15,
-                                fontWeight: FontWeight.normal,
-                                fontFamily: 'NotoSansJP'),
-                          ),
-                          Expanded(
-                            child: Image.asset("images/22171414.jpg"),
-                          ),
-                        ],
-                      ),
-                    ),
-                    color: Colors.white,
-                    margin: const EdgeInsets.all(30),
-                    elevation: 0, // 影の離れ具合
-                    shadowColor: Colors.white,
                   ),
                 ],
               ),
             ),
+            SizedBox(height: screenSize.height * 0.3),
             Stack(
+              alignment: Alignment.center,
               children: [
                 Container(
-                  height: screenSize.height * 2,
+                  height: screenSize.height,
                   width: screenSize.width,
                   color: Color.fromARGB(255, 233, 232, 232),
-                  child: Center(
+                  child: Align(
+                    alignment: Alignment(0, -0.9),
                     child: Text(
                       "Members",
                       style: TextStyle(
-                          fontSize: 30,
-                          fontWeight: FontWeight.bold,
-                          fontFamily: 'NotoSansJP'),
+                        fontSize: 30,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                 ),
-                Column(
-                  children: [
-                    Row(
+                Positioned(
+                  top: screenSize.height * 0.2,
+                  child: Container(
+                    width: screenSize.width,
+                    height: screenSize.height * 1.5,
+                    child: Wrap(
                       children: [
-                        Container(
-                          width: screenSize.width * 0.4,
-                          padding: const EdgeInsets.all(20),
-                          decoration: const BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: Colors.black,
+                        ...Iterable<int>.generate(memberlists.length).map(
+                          (int index) => Column(
+                            children: [
+                              SizedBox(
+                                height: screenSize.height * 0.4,
+                                width: screenSize.width * 0.25,
+                                child: Image.asset(
+                                  memberlists[index][2],
+                                  fit: BoxFit.contain,
+                                ),
+                              ),
+                              SizedBox(height: screenSize.height * 0.03),
+                              Text(
+                                memberlists[index][0],
+                                style: TextStyle(
+                                    fontSize: 20, fontWeight: FontWeight.bold),
+                              ),
+                              SizedBox(height: screenSize.height * 0.02),
+                              Text(
+                                memberlists[index][1],
+                                style: TextStyle(
+                                  fontSize: 25,
+                                ),
+                              ),
+                            ],
                           ),
                         ),
                       ],
-                    )
-                  ],
+                    ),
+                  ),
                 ),
               ],
+            ),
+            Container(
+              padding: const EdgeInsets.all(20),
+              height: screenSize.height * 2,
+              width: screenSize.width,
+              child: Column(
+                children: [
+                  const Text(
+                    "Events",
+                    style: TextStyle(
+                      fontSize: 30,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  Wrap(
+                    children: [
+                      ...Iterable<int>.generate(eventlists.length).map(
+                        (int eventIndex) => Card(
+                          child: SizedBox(
+                            height: screenSize.height / 2,
+                            width: screenSize.width / 3.5,
+                            child: Column(
+                              children: [
+                                Container(
+                                  height: 10,
+                                  width: screenSize.width / 14,
+                                  color: Color.fromARGB(255, 0, 203, 163),
+                                ),
+                                SizedBox(height: screenSize.height * 0.02),
+                                Text(
+                                  eventlists[eventIndex][0],
+                                  style: TextStyle(
+                                      fontSize: 25,
+                                      fontWeight: FontWeight.bold,
+                                      fontFamily: 'NotoSansJP'),
+                                ),
+                                SizedBox(height: screenSize.height * 0.05),
+                                Text(
+                                  eventlists[eventIndex][1],
+                                  style: TextStyle(
+                                      fontSize: 17,
+                                      fontWeight: FontWeight.normal,
+                                      fontFamily: 'NotoSansJP'),
+                                ),
+                                SizedBox(height: screenSize.height * 0.07),
+                                // Expanded(
+                                //   child: Image.asset(
+                                //     activityimages[eventIndex],
+                                //     fit: BoxFit.cover,
+                                //   ),
+                                // ),
+                              ],
+                            ),
+                          ),
+                          color: Colors.white,
+                          margin: const EdgeInsets.all(10),
+                          elevation: 10, // 影の離れ具合
+                          shadowColor: Colors.white,
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ),
           ],
         ),
