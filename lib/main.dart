@@ -52,6 +52,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   final List _isHovering = [false, false, false, false];
+  final List appbarlist = ["Activities", "Members", "Events"];
   final List<String> activityimages = [
     "images/22771349.png",
     "images/22987927.png",
@@ -134,113 +135,46 @@ class _MyHomePageState extends State<MyHomePage> {
                             color: _isHovering[0]
                                 ? Color.fromARGB(255, 9, 67, 97)
                                 : Colors.white,
-                            fontWeight: FontWeight.bold,
                             fontSize: 25,
                           ),
                         ),
                       ),
                       SizedBox(width: screenSize.width / 20),
-                      InkWell(
-                        onHover: (value) {
-                          setState(() {
-                            value
-                                ? _isHovering[1] = true
-                                : _isHovering[1] = false;
-                          });
-                        },
-                        onTap: () {},
-                        child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Text(
-                              'Activities',
-                              style: TextStyle(
-                                color: _isHovering[1]
-                                    ? Colors.blue[200]
-                                    : Colors.white,
+                      ...Iterable<int>.generate(appbarlist.length).map(
+                        (int appbarIndex) => InkWell(
+                          onHover: (value) {
+                            setState(() {
+                              value
+                                  ? _isHovering[appbarIndex + 1] = true
+                                  : _isHovering[appbarIndex + 1] = false;
+                            });
+                          },
+                          onTap: () {},
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Text(
+                                appbarlist[appbarIndex],
+                                style: TextStyle(
+                                  color: _isHovering[appbarIndex + 1]
+                                      ? Colors.blue[200]
+                                      : Colors.white,
+                                ),
                               ),
-                            ),
-                            SizedBox(height: 5),
-                            Visibility(
-                              maintainAnimation: true,
-                              maintainState: true,
-                              maintainSize: true,
-                              visible: _isHovering[1],
-                              child: Container(
-                                height: 2,
-                                width: 20,
-                                color: Colors.white,
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                      InkWell(
-                        onHover: (value) {
-                          setState(() {
-                            value
-                                ? _isHovering[2] = true
-                                : _isHovering[2] = false;
-                          });
-                        },
-                        onTap: () {},
-                        child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Text(
-                              'Events',
-                              style: TextStyle(
-                                color: _isHovering[2]
-                                    ? Colors.blue[200]
-                                    : Colors.white,
-                              ),
-                            ),
-                            Visibility(
-                              maintainAnimation: true,
-                              maintainState: true,
-                              maintainSize: true,
-                              visible: _isHovering[2],
-                              child: Container(
-                                height: 2,
-                                width: 20,
-                                color: Colors.white,
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                      InkWell(
-                        onHover: (value) {
-                          setState(() {
-                            value
-                                ? _isHovering[3] = true
-                                : _isHovering[3] = false;
-                          });
-                        },
-                        onTap: () {},
-                        child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Text(
-                              'Members',
-                              style: TextStyle(
-                                color: _isHovering[3]
-                                    ? Colors.blue[200]
-                                    : Colors.white,
-                              ),
-                            ),
-                            Visibility(
-                              maintainAnimation: true,
-                              maintainState: true,
-                              maintainSize: true,
-                              visible: _isHovering[3],
-                              child: Container(
-                                height: 2,
-                                width: 20,
-                                color: Colors.white,
-                              ),
-                            )
-                          ],
+                              SizedBox(height: 5),
+                              Visibility(
+                                maintainAnimation: true,
+                                maintainState: true,
+                                maintainSize: true,
+                                visible: _isHovering[appbarIndex + 1],
+                                child: Container(
+                                  height: 2,
+                                  width: 20,
+                                  color: Colors.white,
+                                ),
+                              )
+                            ],
+                          ),
                         ),
                       ),
                     ],
@@ -442,7 +376,7 @@ class _MyHomePageState extends State<MyHomePage> {
             //Events erea
             Container(
               padding: const EdgeInsets.all(20),
-              height: screenSize.height * 2,
+              height: screenSize.height * 1.2,
               width: screenSize.width,
               child: Column(
                 children: [
@@ -528,18 +462,18 @@ class _MyHomePageState extends State<MyHomePage> {
                 ],
               ),
             ),
-            ListView.builder(
-              padding: const EdgeInsets.all(8),
-              itemCount: newslists.length,
-              scrollDirection: Axis.vertical,
-              itemBuilder: (BuildContext context, int index) {
-                return Container(
-                  height: 50,
-                  color: Colors.amber,
-                  child: Center(child: Text(newslists[index])),
-                );
-              },
-            ),
+            // ListView.builder(
+            //   padding: const EdgeInsets.all(8),
+            //   itemCount: newslists.length,
+            //   scrollDirection: Axis.vertical,
+            //   itemBuilder: (BuildContext context, int index) {
+            //     return Container(
+            //       height: 50,
+            //       color: Colors.amber,
+            //       child: Center(child: Text(newslists[index])),
+            //     );
+            //   },
+            // ),
           ],
         ),
       ),
