@@ -453,18 +453,54 @@ class _MyHomePageState extends State<MyHomePage> {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  // ListView.builder(
-                  //   padding: const EdgeInsets.all(8),
-                  //   itemCount: newslists.length,
-                  //   scrollDirection: Axis.vertical,
-                  //   itemBuilder: (BuildContext context, int index) {
-                  //     return Container(
-                  //       height: 50,
-                  //       color: Colors.amber,
-                  //       child: Center(child: Text(newslists[index])),
-                  //     );
-                  //   },
-                  // ),
+                  Wrap(
+                    children: [
+                      ...Iterable<int>.generate(eventlists.length).map(
+                        (int eventIndex) => Card(
+                          child: SizedBox(
+                            height: screenSize.height / 2,
+                            width: screenSize.width / 3.5,
+                            child: Column(
+                              children: [
+                                Container(
+                                  height: 10,
+                                  width: screenSize.width / 14,
+                                  color: Color.fromARGB(255, 0, 203, 163),
+                                ),
+                                SizedBox(height: screenSize.height * 0.02),
+                                Text(
+                                  eventlists[eventIndex][0],
+                                  style: TextStyle(
+                                      fontSize: 25,
+                                      fontWeight: FontWeight.bold,
+                                      fontFamily: 'NotoSansJP'),
+                                ),
+                                SizedBox(height: screenSize.height * 0.05),
+                                Text(
+                                  eventlists[eventIndex][1],
+                                  style: TextStyle(
+                                      fontSize: 17,
+                                      fontWeight: FontWeight.normal,
+                                      fontFamily: 'NotoSansJP'),
+                                ),
+                                SizedBox(height: screenSize.height * 0.07),
+                                Expanded(
+                                  child: Image.asset(
+                                    eventlists[eventIndex][2],
+                                    fit: BoxFit.contain,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          color: Colors.white,
+                          margin: const EdgeInsets.all(10),
+                          elevation: 10, // 影の離れ具合
+                          shadowColor: Colors.white,
+                        ),
+                      ),
+                    ],
+                  ),
                   SizedBox(
                     height: screenSize.height * 0.1,
                   ),
