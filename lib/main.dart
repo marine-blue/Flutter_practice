@@ -65,7 +65,7 @@ class _MyHomePageState extends State<MyHomePage> {
   final List<String> activitytexts = [
     "週に1度のペースでSB役員を中心にメンバーがオンサイトで集まり活動予定やイベントの企画について話し合っています。",
     "月に1度のペースでメンバー各自が興味を持った議題について持ち寄りプレゼンター担当を交代しながら議論しています。",
-    "不定期で技術に関するイベントを開催している他、外部の団体が開催するのイベントにも参加しています。",
+    "不定期で技術に関するイベントを開催している他、外部の団体が開催するイベントにも参加しています。",
   ];
   /* メンバー[役職、名前、画像]*/
   final List<List<String>> memberlists = [
@@ -79,18 +79,27 @@ class _MyHomePageState extends State<MyHomePage> {
   final List<List<String>> eventlists = [
     [
       "C言語 Workshop",
-      "1年生やプログラミング初学者に向けてプログラミングでつまづきがちな環境構築やデバッグ方法について説明を行います。"
+      "1年生やプログラミング初学者に向けてプログラミングでつまづきがちな環境構築やデバッグ方法について説明を行います。",
+      "images/unknown.png"
     ],
     [
       "LaTexワークショップ",
-      "研究室配属前の3年生に対してマークアップ言語LaTexを用いた文書作成について講習会を行います。講習会ではオンラインエディタのOverleafを使用する他場合によりローカル環境のインストールを強く勧められます。"
+      "研究室配属前の3年生に対してマークアップ言語LaTexを用いた文書作成についてオンラインエディタのOverleafを使った講習会を行います。",
+      "images/latex.png"
     ],
-    ["テクニカルワークショップ", "主にSB内部のメンバーで新たなプログラミング言語やデバイスを用いてチュートリアルの成果物を作成します。"],
+    [
+      "テクニカルワークショップ",
+      "主にSB内部のメンバーで新たなプログラミング言語やデバイスを用いてチュートリアルの成果物を作成します。",
+      "images/IEEE_SB_brand_small.png"
+    ],
     [
       "LT大会",
-      "他大学SBと連携して一人当たり5分の持ち時間で情報技術に関するピッチコンテストを開催します。質疑応答の場面などを利用して意見交換などが活発に行われます。"
+      "他大学SBと連携して一人当たり5分の持ち時間で情報技術に関するピッチコンテストを開催します。質疑応答の場面などを利用して意見交換などが活発に行われます。",
+      "images/IMG_4760.JPG"
     ],
+    ["and more ...", "", "images/TUATIEEElogo.png"]
   ];
+  final List<String> newslists = ["news1", "news2", "news3", "news4"];
   @override
   Widget build(BuildContext context) {
     var screenSize = MediaQuery.of(context).size;
@@ -292,13 +301,14 @@ class _MyHomePageState extends State<MyHomePage> {
                             fontWeight: FontWeight.bold,
                             fontFamily: 'NotoSansJP'),
                       ),
-                      SizedBox(height: screenSize.height / 20),
+                      SizedBox(height: screenSize.height * 0.02),
                       Container(
                         padding: const EdgeInsets.all(20),
                         child: const Text(
                           "IEEEの活動組織の一つであり、サークル活動に近い意味合いがあります。学生自ら様々な企画運営ができる他、 他大学のBranchの学生や教職員、社会で活躍している専門家等と会い、学び、また交流することによって、色々なプロジェクト、 会議、見学、旅行等の活動を通して、多くの教育的、技術的、専門的な刺激を得ることができます。",
                           style: TextStyle(
                               fontSize: 20,
+                              height: 2.0,
                               color: Colors.black,
                               fontFamily: 'NotoSansJP'),
                         ),
@@ -325,7 +335,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   ...Iterable<int>.generate(activityimages.length).map(
                     (int pageIndex) => Card(
                       child: SizedBox(
-                        height: screenSize.height / 2,
+                        height: screenSize.height / 1.5,
                         width: screenSize.width / 3.5,
                         child: Column(
                           children: [
@@ -369,7 +379,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 ],
               ),
             ),
-            SizedBox(height: screenSize.height * 0.3),
+            SizedBox(height: screenSize.height * 0.1),
             Stack(
               alignment: Alignment.center,
               children: [
@@ -389,7 +399,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                 ),
                 Positioned(
-                  top: screenSize.height * 0.2,
+                  top: screenSize.height * 0.1,
                   child: Container(
                     width: screenSize.width,
                     height: screenSize.height * 1.5,
@@ -399,7 +409,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           (int index) => Column(
                             children: [
                               SizedBox(
-                                height: screenSize.height * 0.4,
+                                height: screenSize.height * 0.3,
                                 width: screenSize.width * 0.25,
                                 child: Image.asset(
                                   memberlists[index][2],
@@ -428,6 +438,8 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ],
             ),
+            /////////////////////////////////////////////////////////////
+            //Events erea
             Container(
               padding: const EdgeInsets.all(20),
               height: screenSize.height * 2,
@@ -441,53 +453,20 @@ class _MyHomePageState extends State<MyHomePage> {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  Wrap(
-                    children: [
-                      ...Iterable<int>.generate(eventlists.length).map(
-                        (int eventIndex) => Card(
-                          child: SizedBox(
-                            height: screenSize.height / 2,
-                            width: screenSize.width / 3.5,
-                            child: Column(
-                              children: [
-                                Container(
-                                  height: 10,
-                                  width: screenSize.width / 14,
-                                  color: Color.fromARGB(255, 0, 203, 163),
-                                ),
-                                SizedBox(height: screenSize.height * 0.02),
-                                Text(
-                                  eventlists[eventIndex][0],
-                                  style: TextStyle(
-                                      fontSize: 25,
-                                      fontWeight: FontWeight.bold,
-                                      fontFamily: 'NotoSansJP'),
-                                ),
-                                SizedBox(height: screenSize.height * 0.05),
-                                Text(
-                                  eventlists[eventIndex][1],
-                                  style: TextStyle(
-                                      fontSize: 17,
-                                      fontWeight: FontWeight.normal,
-                                      fontFamily: 'NotoSansJP'),
-                                ),
-                                SizedBox(height: screenSize.height * 0.07),
-                                // Expanded(
-                                //   child: Image.asset(
-                                //     activityimages[eventIndex],
-                                //     fit: BoxFit.cover,
-                                //   ),
-                                // ),
-                              ],
-                            ),
-                          ),
-                          color: Colors.white,
-                          margin: const EdgeInsets.all(10),
-                          elevation: 10, // 影の離れ具合
-                          shadowColor: Colors.white,
-                        ),
-                      ),
-                    ],
+                  // ListView.builder(
+                  //   padding: const EdgeInsets.all(8),
+                  //   itemCount: newslists.length,
+                  //   scrollDirection: Axis.vertical,
+                  //   itemBuilder: (BuildContext context, int index) {
+                  //     return Container(
+                  //       height: 50,
+                  //       color: Colors.amber,
+                  //       child: Center(child: Text(newslists[index])),
+                  //     );
+                  //   },
+                  // ),
+                  SizedBox(
+                    height: screenSize.height * 0.1,
                   ),
                 ],
               ),
