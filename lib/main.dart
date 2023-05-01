@@ -507,6 +507,39 @@ class _MyHomePageState extends State<MyHomePage> {
                 ],
               ),
             ),
+            /////////////////////////////////////////////////////////////
+            //News erea
+            Container(
+              padding: const EdgeInsets.all(40),
+              height: screenSize.height,
+              width: screenSize.width,
+              child: Column(
+                children: [
+                  const Text(
+                    "News",
+                    style: TextStyle(
+                      fontSize: 30,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  SizedBox(
+                    height: screenSize.height * 0.1,
+                  ),
+                ],
+              ),
+            ),
+            ListView.builder(
+              padding: const EdgeInsets.all(8),
+              itemCount: newslists.length,
+              scrollDirection: Axis.vertical,
+              itemBuilder: (BuildContext context, int index) {
+                return Container(
+                  height: 50,
+                  color: Colors.amber,
+                  child: Center(child: Text(newslists[index])),
+                );
+              },
+            ),
           ],
         ),
       ),
