@@ -100,7 +100,17 @@ class _MyHomePageState extends State<MyHomePage> {
     ],
     ["and more ...", "", "images/TUATIEEElogo.png"]
   ];
-  final List<String> newslists = ["news1", "news2", "news3", "news4"];
+  final List<String> newslists = [
+    "news1",
+    "news2",
+    "news3",
+    "news4",
+    "news5",
+    "news6",
+    "news7",
+    "news8",
+    "news9"
+  ];
   @override
   Widget build(BuildContext context) {
     var screenSize = MediaQuery.of(context).size;
@@ -376,7 +386,7 @@ class _MyHomePageState extends State<MyHomePage> {
             //Events erea
             Container(
               padding: const EdgeInsets.all(20),
-              height: screenSize.height * 1.2,
+              height: screenSize.height * 1.3,
               width: screenSize.width,
               child: Column(
                 children: [
@@ -386,6 +396,9 @@ class _MyHomePageState extends State<MyHomePage> {
                       fontSize: 30,
                       fontWeight: FontWeight.bold,
                     ),
+                  ),
+                  SizedBox(
+                    height: screenSize.height * 0.1,
                   ),
                   Wrap(
                     children: [
@@ -435,20 +448,25 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                     ],
                   ),
-                  SizedBox(
-                    height: screenSize.height * 0.1,
-                  ),
                 ],
               ),
             ),
             /////////////////////////////////////////////////////////////
             //News erea
             Container(
-              padding: const EdgeInsets.all(40),
-              height: screenSize.height,
+              margin: const EdgeInsets.all(100),
+              height: screenSize.height * 0.7,
               width: screenSize.width,
+              decoration: BoxDecoration(
+                border: const Border(
+                  top: const BorderSide(color: Colors.black26, width: 1),
+                ),
+              ),
               child: Column(
                 children: [
+                  SizedBox(
+                    height: screenSize.height * 0.1,
+                  ),
                   const Text(
                     "News",
                     style: TextStyle(
@@ -459,21 +477,39 @@ class _MyHomePageState extends State<MyHomePage> {
                   SizedBox(
                     height: screenSize.height * 0.1,
                   ),
+                  Expanded(
+                    child: Scrollbar(
+                      child: ListView.builder(
+                        shrinkWrap: true,
+                        itemCount: newslists.length,
+                        itemBuilder: (context, index) {
+                          return Container(
+                            height: 80,
+                            decoration: BoxDecoration(
+                              border: const Border(
+                                top: const BorderSide(
+                                  color: Colors.black26,
+                                  width: 1,
+                                ),
+                              ),
+                            ),
+                            child: Center(
+                              child: Text(
+                                newslists[index],
+                                style: TextStyle(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold,
+                                    fontFamily: 'NotoSansJP'),
+                              ),
+                            ),
+                          );
+                        },
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ),
-            // ListView.builder(
-            //   padding: const EdgeInsets.all(8),
-            //   itemCount: newslists.length,
-            //   scrollDirection: Axis.vertical,
-            //   itemBuilder: (BuildContext context, int index) {
-            //     return Container(
-            //       height: 50,
-            //       color: Colors.amber,
-            //       child: Center(child: Text(newslists[index])),
-            //     );
-            //   },
-            // ),
           ],
         ),
       ),
