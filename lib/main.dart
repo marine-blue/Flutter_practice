@@ -1,5 +1,5 @@
 import 'dart:html';
-
+import 'dart:async';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -53,6 +53,11 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   final List _isHovering = [false, false, false, false];
   final List appbarlist = ["Activities", "Members", "Events"];
+  final List thumbnailimages = [
+    "images/IMG_20221031_115447_085.jpeg",
+    "images/TUATIEEElogo.png",
+    "images/IMG_20220523_162425.jpg",
+  ];
   final List<String> activityimages = [
     "images/22771349.png",
     "images/22987927.png",
@@ -111,6 +116,11 @@ class _MyHomePageState extends State<MyHomePage> {
     "news8",
     "news9"
   ];
+
+  ScrollController _scrollController = ScrollController();
+  final List<double> _scrollPosition = [0, 1250, 1900, 2600];
+  int _imagechanger = 0;
+
   @override
   Widget build(BuildContext context) {
     var screenSize = MediaQuery.of(context).size;
@@ -159,7 +169,15 @@ class _MyHomePageState extends State<MyHomePage> {
                                   : _isHovering[appbarIndex + 1] = false;
                             });
                           },
-                          onTap: () {},
+                          onTap: () {
+                            setState(() {
+                              _scrollController.animateTo(
+                                _scrollPosition[appbarIndex + 1],
+                                duration: Duration(milliseconds: 700),
+                                curve: Curves.easeOutCirc,
+                              );
+                            });
+                          },
                           child: Column(
                             mainAxisSize: MainAxisSize.min,
                             children: [
@@ -196,18 +214,24 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
       body: SingleChildScrollView(
+        controller: _scrollController,
         child: Column(
           children: [
             Stack(
               children: [
                 Container(
                   // image below the top bar
-                  child: SizedBox(
-                    height: screenSize.height,
-                    width: screenSize.width,
+                  height: screenSize.height,
+                  width: screenSize.width,
+                  child: AnimatedSwitcher(
+                    duration: Duration(milliseconds: 2000),
+                    transitionBuilder: (child, animation) {
+                      return ScaleTransition(child: child, scale: animation);
+                    },
                     child: Image.asset(
-                      "images/IMG_20221031_115447_085.jpeg",
-                      fit: BoxFit.cover,
+                      thumbnailimages[_imagechanger],
+                      key: ValueKey<int>(_imagechanger),
+                      fit: BoxFit.contain,
                     ),
                   ),
                 ),
@@ -270,7 +294,9 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ],
             ),
-            SizedBox(height: screenSize.height * 0.3),
+            SizedBox(
+              height: screenSize.height * 0.3,
+            ),
             Center(
               child: Row(
                 /*イラストと活動内容3つの紹介部分横並び*/
@@ -514,5 +540,21 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
     );
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    Timer.periodic(const Duration(seconds: 7), (timer) {
+      setState(() {
+        if (_imagechanger < thumbnailimages.length - 1) {
+          _imagechanger += 1;
+        } else {
+          _imagechanger = 0;
+        }
+      });
+    });
+
+    super.initState();
   }
 }
