@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MyHomePage(title: ''),
     );
   }
 }
@@ -219,7 +219,7 @@ class _MyHomePageState extends State<MyHomePage> {
           children: [
             Stack(
               children: [
-                Container(
+                SizedBox(
                   // image below the top bar
                   height: screenSize.height,
                   width: screenSize.width,
@@ -231,12 +231,12 @@ class _MyHomePageState extends State<MyHomePage> {
                     child: Image.asset(
                       thumbnailimages[_imagechanger],
                       key: ValueKey<int>(_imagechanger),
-                      fit: BoxFit.contain,
+                      fit: BoxFit.cover,
                     ),
                   ),
                 ),
                 Positioned(
-                  left: screenSize.width * 0.1,
+                  left: screenSize.width * 0.15,
                   top: screenSize.height * 0.3,
                   child: Container(
                     height: screenSize.height,
